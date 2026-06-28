@@ -4,14 +4,18 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
+#include <fstream>
+#include <sstream>
 
 struct Sprite {
     Sprite(int width, int height, int x, int y);
+    Sprite(const std::string& filename);
 
     int width, height, x, y;
     std::vector<char> data;
-
 };
+
 struct Shape {}; // Same thing
 
 // Represents the screen

@@ -3,6 +3,30 @@
 
 // Initializes the sprite
 Sprite::Sprite(int width, int height, int x, int y) : width(width), height(height), x(x), y(y), data(width * height) {};
+Sprite::Sprite(const std::string& filename) {
+    std::ifstream file(filename);
+    file >> width >> height;
+
+    data.reserve(width * height);
+
+    file.ignore();
+
+    std::string line;
+
+    for (int i = 0; i < height; i++) {
+        std::getline(file, line);
+
+        for (int j = 0; j < width; j++) {
+            data.push_back(line[j]);
+        }
+    }
+
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) std::cout << data[i * width + j];
+        std::cout << '\n';
+    }
+
+}
 
 // Initializes the framebuffer
 Framebuffer::Framebuffer(int width, int height) : width(width), height(height), data(width * height) {};
