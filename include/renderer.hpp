@@ -2,18 +2,30 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 
+#include <iostream>
 #include <vector>
 
-struct Sprite {}; // Forward declaration because is not implemented yet.
+struct Sprite {
+    Sprite(int width, int height, int x, int y);
+
+    int width, height, x, y;
+    std::vector<char> data;
+
+};
 struct Shape {}; // Same thing
 
+// Represents the screen
 struct Framebuffer {
     Framebuffer(int width, int height);
 
     std::vector<char> data;
     int width, height;
+
+    void tempLog();
 };
 
+
+// Has the screen and modifies it
 class Renderer {
 public:
     Renderer() = default;
@@ -24,8 +36,8 @@ public:
     void render(const Shape&);
 
     void clear();
+    void display();
 
-private:
     Framebuffer mFramebuffer;
 };
 
