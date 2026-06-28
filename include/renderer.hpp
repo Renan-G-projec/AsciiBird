@@ -16,8 +16,6 @@ struct Sprite {
     std::vector<char> data;
 };
 
-struct Shape {}; // Same thing
-
 // Represents the screen
 struct Framebuffer {
     Framebuffer(int width, int height);
@@ -37,7 +35,6 @@ public:
     ~Renderer() = default;
 
     void render(const Sprite&);
-    void render(const Shape&);
 
     void clear();
     void display();

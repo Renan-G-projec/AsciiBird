@@ -21,11 +21,6 @@ Sprite::Sprite(const std::string& filename) {
         }
     }
 
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) std::cout << data[i * width + j];
-        std::cout << '\n';
-    }
-
 }
 
 // Initializes the framebuffer
