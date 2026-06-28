@@ -22,8 +22,6 @@ struct Framebuffer {
 
     std::vector<char> data;
     int width, height;
-
-    void tempLog();
 };
 
 
