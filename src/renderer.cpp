@@ -28,6 +28,8 @@ Sprite::Sprite(const std::string& filename) {
 Framebuffer::Framebuffer(int width, int height) : width(width), height(height), data(width * height) {};
 
 // Render
+Renderer::Renderer(int width, int height) : mFramebuffer{width, height} {};
+
 void Renderer::render(const Sprite& sprite) {
     for (int y = 0; y < sprite.height; y++) {
         const char fbY = y + sprite.y;

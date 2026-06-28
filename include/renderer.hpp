@@ -28,7 +28,7 @@ struct Framebuffer {
 // Has the screen and modifies it
 class Renderer {
 public:
-    Renderer() = default;
+    Renderer(int width, int height);
     Renderer(const Renderer&) = delete;
     ~Renderer() = default;
 
@@ -37,6 +37,7 @@ public:
     void clear();
     void display();
 
+private:
     Framebuffer mFramebuffer;
 };
 
