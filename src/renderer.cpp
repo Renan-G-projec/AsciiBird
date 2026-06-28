@@ -1,5 +1,6 @@
 // Ad Maiorem Dei Gloriam!
 #include "renderer.hpp"
+#include "osDefines.hpp"
 
 // Initializes the sprite
 Sprite::Sprite(int width, int height, int x, int y) : width(width), height(height), x(x), y(y), data(width * height) {};
@@ -26,13 +27,6 @@ Sprite::Sprite(const std::string& filename) {
 // Initializes the framebuffer
 Framebuffer::Framebuffer(int width, int height) : width(width), height(height), data(width * height) {};
 
-void Framebuffer::tempLog() {
-    for (int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++) std::cout << data[i * width + j];
-        std::cout << '\n';
-    }
-}
-
 // Render
 void Renderer::render(const Sprite& sprite) {
     for (int y = 0; y < sprite.height; y++) {
@@ -51,4 +45,21 @@ void Renderer::render(const Sprite& sprite) {
             mFramebuffer.data[fbCurrentIndex] = currentChar;
         }
     }
+}
+
+void Renderer::clear() {
+    OS_CONSOLE_CLEAR();
+    for (int y = 0; y < mFramebuffer.height; y++) {
+        for (int x = 0; x < mFramebuffer.width; x++) {
+            std::fill(mFramebuffer.data.begin(), mFramebuffer.data.end(), ' ');
+        }
+    }
+}
+
+void Renderer::display() {
+    for (int i = 0; i < mFramebuffer.height; i++) {
+        for (int j = 0; j < mFramebuffer.width; j++) std::cout << mFramebuffer.data[i * mFramebuffer.width + j];
+        std::cout << '\n';
+    }
+    std::cout.flush();
 }
