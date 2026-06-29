@@ -13,7 +13,8 @@ public:
     static bool isKeyPressed(const char);
 
 private:
-    bool mKeyPressedTable[256] = {0};
+    static char previousPressedKey;
+    static bool mKeyPressedTable[256];
 };
 
 #endif
