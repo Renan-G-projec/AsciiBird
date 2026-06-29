@@ -8,8 +8,8 @@ struct Hitbox {
 };
 
 class PhysicsEngine {
-
-    static bool checkCollisionRect(Hitbox, Hitbox);
+public:
+    static bool checkCollisionRect(const Hitbox&, const Hitbox&);
 };
 
 #endif
