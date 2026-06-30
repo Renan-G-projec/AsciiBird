@@ -9,7 +9,7 @@
 class Pipe {
 public:
 
-    Pipe(int startingX,float startingVel);
+    Pipe(int startingX, float startingVel, int* globalPointsRef);
 
     void update();
 
@@ -32,6 +32,7 @@ private:
     // Defines the spawn of the pipes. Shall be the right border.
     int defaultBorder;
 
+    int* globalPoints;
 };
 
 #endif

@@ -20,7 +20,7 @@ int main() {
     int points = 0;
 
     Player player(1, 1);
-    Pipe pipe{WINDOW_WIDTH, -0.5f};
+    Pipe pipe{WINDOW_WIDTH, -0.5f, &points};
 
     bool gameOver = false;
 

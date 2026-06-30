@@ -1,7 +1,7 @@
 // Ad Maiorem Dei Gloriam!
 #include "pipe.hpp"
 
-Pipe::Pipe(int startingX, float startingVel) : realPosX(static_cast<float>(startingX)), realVelX(startingVel) {
+Pipe::Pipe(int startingX, float startingVel, int* globalPointsRef) : realPosX(static_cast<float>(startingX)), realVelX(startingVel), globalPoints(globalPointsRef) {
     mSpr.x = startingX;
     chooseRandomY();
 
@@ -10,6 +10,7 @@ Pipe::Pipe(int startingX, float startingVel) : realPosX(static_cast<float>(start
 
 void Pipe::update()
 {
+    int prevX = mSpr.x;
     realPosX += realVelX;
     mSpr.x = static_cast<int>(realPosX);
 
@@ -17,6 +18,8 @@ void Pipe::update()
         chooseRandomY();
         setX(defaultBorder);
     }
+
+    if (prevX != 1 && mSpr.x == 1) (*globalPoints)++;
 }
 
 void Pipe::setX(int newx) {
