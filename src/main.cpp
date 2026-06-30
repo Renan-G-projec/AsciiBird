@@ -1,18 +1,31 @@
 // Ad Maiorem Dei Gloriam!
 #include <iostream>
+#include "inputHandler.hpp"
+#include "renderer.hpp"
 #include "clock.hpp"
 
-#define WINDOW_WIDTH 60
-#define WINDOW_HEIGHT 30
+#define WINDOW_WIDTH 80
+#define WINDOW_HEIGHT 24
+
+#define WINDOW_FPS 1
 
 // Test
 int main() {
-    Clock::setTargetFPS(60);
-    for (int i = 0; i <= 60; i++) {
+    Renderer renderer{WINDOW_WIDTH, WINDOW_HEIGHT};
+    InputHandler::init();
+    Clock::setTargetFPS(WINDOW_FPS);
+
+    while (true) {
         Clock::initTick();
-        Clock::getFrameTime();
+        InputHandler::update();
+        renderer.clear();
+
+        if (InputHandler::isKeyPressed('q') || InputHandler::isKeyPressed('Q')) break;
+
+        renderer.display();
         Clock::finishTick();
     }
-    std::cout << "Hello, World!\n";
+
+    InputHandler::finish();
     return 0;
 }
