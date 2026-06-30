@@ -9,15 +9,15 @@ public:
 
     void update();
 
-    void chooseRandomY(int centerYMinimum, int centerYMaximum);
+    void chooseRandomY();
     void setX(int newx);
 
     void setVel(float newVel);
 
-    Sprite getSprite();
+    Sprite& getSprite();
 
 private:
-    Sprite mSpr{"assets/pipe.hpp"};
+    Sprite mSpr{"assets/pipe.ascii"};
 
     float realVelX;
     float realPosX;

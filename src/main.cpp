@@ -4,6 +4,7 @@
 #include "renderer.hpp"
 #include "clock.hpp"
 #include "player.hpp"
+#include "pipe.hpp"
 
 #define WINDOW_WIDTH 40
 #define WINDOW_HEIGHT 12
@@ -18,6 +19,11 @@ int main() {
 
     Player player(1, 1);
 
+    Pipe pipe;
+    pipe.setVel(-0.1);
+    pipe.chooseRandomY();
+    pipe.setX(5);
+
     while (true) {
         Clock::initTick();
         InputHandler::update();
@@ -25,8 +31,10 @@ int main() {
 
         if (InputHandler::isKeyPressed('q') || InputHandler::isKeyPressed('Q')) break;
         player.update(Clock::getFrameTime());
+        pipe.update();
 
         renderer.render(player.getSprite());
+        renderer.render(pipe.getSprite());
 
         renderer.display();
         Clock::finishTick();

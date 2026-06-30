@@ -7,5 +7,6 @@ add_executable(AsciiBird)
 target_sources(AsciiBird PRIVATE 
     src/main.cpp src/renderer.cpp src/inputHandler.cpp
     src/physicsEngine.cpp src/clock.cpp src/player.cpp
+    src/pipe.cpp
 )
 target_include_directories(AsciiBird PRIVATE include/)
