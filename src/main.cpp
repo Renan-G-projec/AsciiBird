@@ -19,10 +19,7 @@ int main() {
 
     Player player(1, 1);
 
-    Pipe pipe;
-    pipe.setVel(-0.1);
-    pipe.chooseRandomY();
-    pipe.setX(5);
+    Pipe pipe{WINDOW_WIDTH, -0.5f};
 
     while (true) {
         Clock::initTick();

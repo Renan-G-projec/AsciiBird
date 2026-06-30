@@ -3,9 +3,12 @@
 #define PIPE_HPP
 
 #include "renderer.hpp"
+#include "random.hpp"
 
 class Pipe {
 public:
+
+    Pipe(int startingX,float startingVel);
 
     void update();
 
@@ -21,6 +24,9 @@ private:
 
     float realVelX;
     float realPosX;
+
+    // Defines the spawn of the pipes. Shall be the right border.
+    int defaultBorder;
 
 };
 

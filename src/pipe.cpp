@@ -1,14 +1,21 @@
 // Ad Maiorem Dei Gloriam!
 #include "pipe.hpp"
 
-void Pipe::update() {
+Pipe::Pipe(int startingX, float startingVel) : realPosX(static_cast<float>(startingX)), realVelX(startingVel) {
+    mSpr.x = startingX;
+    chooseRandomY();
+
+    defaultBorder = startingX;
+}
+
+void Pipe::update()
+{
     realPosX += realVelX;
     mSpr.x = static_cast<int>(realPosX);
 
     if (mSpr.x + mSpr.width < 0) {
         chooseRandomY();
-        setX(20);
-        return;
+        setX(defaultBorder);
     }
 }
 
@@ -22,10 +29,9 @@ void Pipe::setVel(float newVel) {
 }
 
 void Pipe::chooseRandomY() {
-    mSpr.y = -11; 
+    mSpr.y = Random::randint(-10, 0);
 }
 
 Sprite& Pipe::getSprite() {
-
     return mSpr;
 }
