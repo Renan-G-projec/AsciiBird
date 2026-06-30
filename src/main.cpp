@@ -34,9 +34,13 @@ int main() {
         if (!gameOver) {
             player.update(Clock::getFrameTime());
             pipe.update();
-
+            
             gameOver = PhysicsEngine::checkCollisionRect(player.getHitbox(), pipe.getHitboxBottom()) ||
-                       PhysicsEngine::checkCollisionRect(player.getHitbox(), pipe.getHitboxUp());
+            PhysicsEngine::checkCollisionRect(player.getHitbox(), pipe.getHitboxUp());
+            
+            const Hitbox pH = player.getHitbox();
+            // Outside the window
+            if (pH.y + pH.h < 0 || pH.y > WINDOW_HEIGHT) gameOver = true; 
         } else {
             if (InputHandler::isKeyPressed('r') || InputHandler::isKeyPressed('R')) {
                 points = 0;
