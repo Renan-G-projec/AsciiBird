@@ -31,5 +31,5 @@ void Player::reset() {
 Sprite& Player::getSprite() { return mSpr; }
 
 Hitbox Player::getHitbox() {
-    return Hitbox{mSpr.x, mSpr.y, mSpr.width, mSpr.height};
+    return Hitbox{mSpr.x + 1, mSpr.y + 1, mSpr.width - 1, mSpr.height - 1};
 }

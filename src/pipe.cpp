@@ -41,10 +41,10 @@ Sprite& Pipe::getSprite() {
 }
 
 Hitbox Pipe::getHitboxUp() {
-    return {mSpr.x + 1, mSpr.y, 4, 20};
+    return {mSpr.x + 1, mSpr.y, 4, 21};
 }
 
 Hitbox Pipe::getHitboxBottom() {
-    return {mSpr.x + 1, mSpr.y + 27, 4, 20};
+    return {mSpr.x + 1, mSpr.y + 29, 4, 21};
 }
 
