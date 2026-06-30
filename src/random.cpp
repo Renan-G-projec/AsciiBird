@@ -2,5 +2,5 @@
 #include "random.hpp"
 
 int Random::randint(int min, int max) {
-    return -10;
+    return (rand() % std::abs(max - min)) + min;
 }

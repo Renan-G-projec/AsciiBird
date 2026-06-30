@@ -29,7 +29,7 @@ void Pipe::setVel(float newVel) {
 }
 
 void Pipe::chooseRandomY() {
-    mSpr.y = Random::randint(-10, 0);
+    mSpr.y = Random::randint(-20, 0);
 }
 
 Sprite& Pipe::getSprite() {

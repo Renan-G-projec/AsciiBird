@@ -7,7 +7,7 @@
 #include "pipe.hpp"
 
 #define WINDOW_WIDTH 40
-#define WINDOW_HEIGHT 12
+#define WINDOW_HEIGHT 24
 
 #define WINDOW_FPS 60
 
@@ -30,8 +30,8 @@ int main() {
         player.update(Clock::getFrameTime());
         pipe.update();
 
-        renderer.render(player.getSprite());
         renderer.render(pipe.getSprite());
+        renderer.render(player.getSprite());
 
         renderer.display();
         Clock::finishTick();
