@@ -7,7 +7,6 @@
 
 // Test
 int main() {
-    std::cout << PhysicsEngine::checkCollisionRect({1, 1, 2, 2}, {3, 4, 2, 2}) << '\n';
 
     std::cout << "Hello, World!\n";
     return 0;
