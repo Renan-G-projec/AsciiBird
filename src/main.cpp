@@ -3,11 +3,12 @@
 #include "inputHandler.hpp"
 #include "renderer.hpp"
 #include "clock.hpp"
+#include "player.hpp"
 
 #define WINDOW_WIDTH 40
 #define WINDOW_HEIGHT 12
 
-#define WINDOW_FPS 1
+#define WINDOW_FPS 60
 
 // Test
 int main() {
@@ -15,12 +16,17 @@ int main() {
     InputHandler::init();
     Clock::setTargetFPS(WINDOW_FPS);
 
+    Player player(1, 1);
+
     while (true) {
         Clock::initTick();
         InputHandler::update();
         renderer.clear();
 
         if (InputHandler::isKeyPressed('q') || InputHandler::isKeyPressed('Q')) break;
+        player.update(Clock::getFrameTime());
+
+        renderer.render(player.getSprite());
 
         renderer.display();
         Clock::finishTick();

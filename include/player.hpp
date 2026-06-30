@@ -5,8 +5,8 @@
 #include "renderer.hpp" // For Sprite
 #include "inputHandler.hpp"
 
-#define GRAVITY 0.2f
-#define JMP_FORCE 3.0f
+#define GRAVITY 0.02f
+#define JMP_FORCE 0.5f
 
 class Player {
 public:
@@ -15,6 +15,8 @@ public:
 
     void jump(float jumpForce);
     void update(float deltatime);
+
+    Sprite& getSprite();
     
 private:
     Sprite mSpr{"assets/bird.ascii"};
