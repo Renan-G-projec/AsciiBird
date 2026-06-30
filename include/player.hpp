@@ -17,6 +17,8 @@ public:
     void jump(float jumpForce);
     void update(float deltatime);
 
+    void reset();
+
     Hitbox getHitbox();
 
     Sprite& getSprite();

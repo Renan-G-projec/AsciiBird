@@ -17,9 +17,12 @@ int main() {
     InputHandler::init();
     Clock::setTargetFPS(WINDOW_FPS);
 
-    Player player(1, 1);
+    int points = 0;
 
+    Player player(1, 1);
     Pipe pipe{WINDOW_WIDTH, -0.5f};
+
+    bool gameOver = false;
 
     while (true) {
         Clock::initTick();
@@ -27,13 +30,31 @@ int main() {
         renderer.clear();
 
         if (InputHandler::isKeyPressed('q') || InputHandler::isKeyPressed('Q')) break;
-        player.update(Clock::getFrameTime());
-        pipe.update();
+
+        if (!gameOver) {
+            player.update(Clock::getFrameTime());
+            pipe.update();
+
+            gameOver = PhysicsEngine::checkCollisionRect(player.getHitbox(), pipe.getHitboxBottom()) ||
+                       PhysicsEngine::checkCollisionRect(player.getHitbox(), pipe.getHitboxUp());
+        } else {
+            if (InputHandler::isKeyPressed('r') || InputHandler::isKeyPressed('R')) {
+                points = 0;
+                pipe.chooseRandomY();
+                pipe.resetX();
+
+                player.reset();
+                gameOver = false;
+            } 
+        }
 
         renderer.render(pipe.getSprite());
         renderer.render(player.getSprite());
 
         renderer.display();
+
+        std::cout << "\nPoints: " << points << '\n';
+        if (gameOver) std::cout << "Game Over! Press 'r' to restart.\n";
         Clock::finishTick();
     }
 

@@ -3,6 +3,7 @@
 #define PIPE_HPP
 
 #include "renderer.hpp"
+#include "physicsEngine.hpp"
 #include "random.hpp"
 
 class Pipe {
@@ -14,10 +15,13 @@ public:
 
     void chooseRandomY();
     void setX(int newx);
+    void resetX();
 
     void setVel(float newVel);
 
     Sprite& getSprite();
+    Hitbox getHitboxUp();
+    Hitbox getHitboxBottom();
 
 private:
     Sprite mSpr{"assets/pipe.ascii"};

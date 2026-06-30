@@ -22,6 +22,12 @@ void Player::jump(float jumpForce) {
     velY = -jumpForce;
 }
 
+void Player::reset() {
+    velY = 0;
+    realPosY = 1;
+    mSpr.y = 1;
+}
+
 Sprite& Player::getSprite() { return mSpr; }
 
 Hitbox Player::getHitbox() {

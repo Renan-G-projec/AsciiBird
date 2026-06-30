@@ -24,6 +24,10 @@ void Pipe::setX(int newx) {
     mSpr.x = newx; 
 }
 
+void Pipe::resetX() {
+    setX(defaultBorder);
+}
+
 void Pipe::setVel(float newVel) {
     realVelX = newVel;
 }
@@ -35,3 +39,12 @@ void Pipe::chooseRandomY() {
 Sprite& Pipe::getSprite() {
     return mSpr;
 }
+
+Hitbox Pipe::getHitboxUp() {
+    return {mSpr.x + 1, mSpr.y, 4, 20};
+}
+
+Hitbox Pipe::getHitboxBottom() {
+    return {mSpr.x + 1, mSpr.y + 27, 4, 20};
+}
+
