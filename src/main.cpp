@@ -4,8 +4,8 @@
 #include "renderer.hpp"
 #include "clock.hpp"
 
-#define WINDOW_WIDTH 80
-#define WINDOW_HEIGHT 24
+#define WINDOW_WIDTH 40
+#define WINDOW_HEIGHT 12
 
 #define WINDOW_FPS 1
 
