@@ -20,8 +20,7 @@ void Clock::setTargetFPS(int fps) {
 }
 
 float Clock::getFrameTime() {
-    std::cout << "frameTime: " << mDeltatime.count() << '\n';
-    return 0.0f;
+    return mDeltatime.count();
 }
 
 void Clock::finishTick() {

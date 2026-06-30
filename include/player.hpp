@@ -3,6 +3,7 @@
 #define PLAYER_HPP
 
 #include "renderer.hpp" // For Sprite
+#include "physicsEngine.hpp" // For Hitbox
 #include "inputHandler.hpp"
 
 #define GRAVITY 0.02f
@@ -15,6 +16,8 @@ public:
 
     void jump(float jumpForce);
     void update(float deltatime);
+
+    Hitbox getHitbox();
 
     Sprite& getSprite();
     

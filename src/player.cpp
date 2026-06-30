@@ -23,3 +23,7 @@ void Player::jump(float jumpForce) {
 }
 
 Sprite& Player::getSprite() { return mSpr; }
+
+Hitbox Player::getHitbox() {
+    return Hitbox{mSpr.x, mSpr.y, mSpr.width, mSpr.height};
+}
