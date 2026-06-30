@@ -1,19 +1,42 @@
 // Ad Maiorem Dei Gloriam!
 #include "inputHandler.hpp"
+#include <cstdlib>
+#include <cstring>
+
+bool InputHandler::mKeyPressedTable[256];
+char InputHandler::previousPressedKey;
 
 #ifdef _WIN32 // Windows
+
+#include <conio.h>
+
+void InputHandler::init() {return}
+
+void InputHandler::finish() {return}
+
+void InputHandler::update() {
+    char buffer;
+
+    if (_kbhit()) {
+        buffer = _getch();
+        if (previousPressedKey != 0) mKeyPressedTable[previousPressedKey] = false;
+        
+        mKeyPressedTable[buffer] = true;
+        previousPressedKey = buffer;
+    } else {
+        if (previousPressedKey != 0) {
+            mKeyPressedTable[previousPressedKey] = false;
+            previousPressedKey = 0;
+        }
+    }
+}
 
 #else // Unix 
 
 #include <termios.h>
 #include <unistd.h>
-#include <cstdlib>
-#include <cstring>
 
 struct termios oldt, newt;
-
-bool InputHandler::mKeyPressedTable[256];
-char InputHandler::previousPressedKey;
 
 void InputHandler::init() {
     memset(&mKeyPressedTable, 0, sizeof(mKeyPressedTable));
@@ -58,8 +81,9 @@ void InputHandler::update() {
     }
 }
 
+
+#endif
+
 bool InputHandler::isKeyPressed(char c) {
     return mKeyPressedTable[c];
 }
-
-#endif
