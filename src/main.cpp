@@ -7,6 +7,7 @@
 
 // Test
 int main() {
+    Clock::setTargetFPS(30);
     for (int i = 0; i <= 60; i++) {
         Clock::initTick();
         std::cout << i << '\n';

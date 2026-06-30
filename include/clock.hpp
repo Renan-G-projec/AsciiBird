@@ -12,7 +12,10 @@ public:
     static void initTick();
     static void finishTick();
 
+    static void setTargetFPS(int fps);
+
 private:
+    static int mTargetFPS;
     static std::chrono::time_point<std::chrono::high_resolution_clock> mPrevStartTick;
 };
 
