@@ -17,6 +17,9 @@ public:
 private:
     static int mTargetFPS;
     static std::chrono::time_point<std::chrono::high_resolution_clock> mPrevStartTick;
+    static std::chrono::duration<float, std::milli> mDeltatime;
+
+    static bool mIsFirstFrame;
 };
 
 #endif

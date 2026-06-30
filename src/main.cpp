@@ -7,10 +7,10 @@
 
 // Test
 int main() {
-    Clock::setTargetFPS(30);
+    Clock::setTargetFPS(60);
     for (int i = 0; i <= 60; i++) {
         Clock::initTick();
-        std::cout << i << '\n';
+        Clock::getFrameTime();
         Clock::finishTick();
     }
     std::cout << "Hello, World!\n";
