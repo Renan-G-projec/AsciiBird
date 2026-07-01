@@ -6,6 +6,16 @@
 Sprite::Sprite(int width, int height, int x, int y) : width(width), height(height), x(x), y(y), data(width * height) {};
 Sprite::Sprite(const std::string& filename) {
     std::ifstream file(filename);
+    if (!file.is_open()) {
+        OS_CONSOLE_CLEAR();
+        std::cout << "Opps! Sounds like the file " << filename << " wasn't found!\n";
+        std::cout << "Remember to download the files in https://github.com/Renan-G-projec/AsciiBird -> (folder assets)\n";
+        std::cout << "If you have the folders, just run the binary in the parent directory of the 'assets/' folder!\n";
+        std::cout << ":)\n";
+
+        exit(0);
+    }
+
     file >> width >> height;
 
     data.reserve(width * height);
