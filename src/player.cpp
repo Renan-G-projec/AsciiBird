@@ -2,7 +2,7 @@
 
 #include "player.hpp"
 
-Player::Player(int posX, int posY) : realPosY{posY}, velY{0} {
+Player::Player(int posX, int posY) : realPosY{static_cast<float>(posY)}, velY{0} {
     mSpr.x = posX;
     mSpr.y = posY;
 }
