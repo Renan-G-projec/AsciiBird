@@ -10,10 +10,10 @@ public:
 
     static void update();
 
-    static bool isKeyPressed(const char);
+    static bool isKeyPressed(const unsigned char);
 
 private:
-    static char previousPressedKey;
+    static unsigned char previousPressedKey;
     static bool mKeyPressedTable[256];
 };
 

@@ -4,7 +4,7 @@
 #include <cstring>
 
 bool InputHandler::mKeyPressedTable[256];
-char InputHandler::previousPressedKey;
+unsigned char InputHandler::previousPressedKey;
 
 #ifdef _WIN32 // Windows
 
@@ -65,7 +65,7 @@ void InputHandler::finish() {
 }
 
 void InputHandler::update() {
-    char buffer;
+    unsigned char buffer;
     unsigned char readAnything = read(0, &buffer, 1);
 
     if (readAnything > 0) {
@@ -84,6 +84,6 @@ void InputHandler::update() {
 
 #endif
 
-bool InputHandler::isKeyPressed(char c) {
+bool InputHandler::isKeyPressed(unsigned char c) {
     return mKeyPressedTable[c];
 }

@@ -9,4 +9,5 @@ target_sources(AsciiBird PRIVATE
     src/physicsEngine.cpp src/clock.cpp src/player.cpp
     src/pipe.cpp src/random.cpp
 )
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic")
 target_include_directories(AsciiBird PRIVATE include/)
